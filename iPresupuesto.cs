@@ -1,17 +1,26 @@
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
+using departamento;
 
-namespace ipresupuesto{
+namespace ipresupuesto
+{
     [ServiceContract]
-    public interface iPresupuesto{
+    public interface iPresupuesto
+    {
         [OperationContract]
-        public decimal mostrarPresupuestoDisponible();
+        decimal mostrarPresupuestoDisponible(int id);
+
         [OperationContract]
-        public string agregarPresupuesto(decimal monto);
+        string agregarPresupuesto(int id, decimal monto);
+
         [OperationContract]
-        public string sustraerPresupuesto(decimal monto);
+        string sustraerPresupuesto(int id, decimal monto);
+
         [OperationContract]
-        public bool alcanzaElPresupuesto(decimal monto);
-        
+        bool alcanzaElPresupuesto(int id, decimal monto);
+
+        [OperationContract]
+        List<Departamento> mostrarDepartamentos(); // Cambiado a List<Departamento>
     }
 }
